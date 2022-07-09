@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+    android:background="#FFFFFF">
+  <ImageView
+    android:id="@+id/catImage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:visibility="gone"/>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="15sp"
+        android:text="◎      ◎      ◎"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      android:textAlignment="center"
+      android:textSize="15sp"
+        android:textColor="#38340e"
+      android:text="위 동그라미를 바라보고,\n 초점이 정확히 맞으면 시작!\n제대로 맞지 않으면 재교정!\n\n시작을 누르면 바로 시작합니다"/>
+  </LinearLayout>
+
+  <visual.camp.sample.view.GazePathView
+    android:id="@+id/gazePathView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+  <Button
+      android:id="@+id/btn_reCali"
+      android:layout_width="92dp"
+      android:layout_height="56dp"
+      android:layout_gravity="center_horizontal|bottom"
+      android:layout_marginRight="60sp"
+      android:layout_marginBottom="20sp"
+      android:background="@drawable/button_color_drawable"
+      android:text="재교정"
+      android:textColor="@color/colorPrimaryDark"/>
+
+  <Button
+      android:id="@+id/btn_gameS"
+      android:layout_width="92dp"
+      android:layout_height="56dp"
+      android:layout_gravity="center_horizontal|bottom"
+      android:layout_marginLeft="80sp"
+      android:layout_marginBottom="20sp"
+      android:background="@drawable/button_color_drawable"
+      android:text="시작"
+      android:textColor="@color/colorPrimaryDark"/>
+
+</FrameLayout>

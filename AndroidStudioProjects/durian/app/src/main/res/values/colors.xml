@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#406756</color>
+    <color name="colorPrimaryDark">#38340e</color>
+    <color name="colorAccent">#7c9339</color>
+    <color name="caliBackground">#7D7D7D</color>
+    <color name="calipoint">#DE5F57</color>
+    <color name="base">#FFFFFF</color>
+    <color name="darkgray">#6B6E6F</color>
+</resources>
