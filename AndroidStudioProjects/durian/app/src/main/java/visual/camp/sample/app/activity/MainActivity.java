@@ -102,7 +102,12 @@ public class MainActivity extends AppCompatActivity {
         btn_quit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finishAffinity();
+                time.stop();
+                pauseOffset = SystemClock.elapsedRealtime() - time.getBase();
+                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                intent.putExtra("time", pauseOffset);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -158,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
                     img_awake.setVisibility(View.VISIBLE);
                     if(!running){
                         time.setBase(SystemClock.elapsedRealtime() - pauseOffset);
-                        time.start();
                         running = true;
                     }
                 }
@@ -488,6 +492,7 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }
                     mediaPlayer.start();
+                    time.start();
                     img_sleep.setVisibility(View.VISIBLE);
                     img_awake.setVisibility(View.INVISIBLE);
                 }
@@ -504,6 +509,7 @@ public class MainActivity extends AppCompatActivity {
                 viewWarningTracking.setVisibility(View.INVISIBLE);
                 if(isRunning == false && caliOK==true){
                     if (mediaPlayer == null) {
+                        time.stop();
                         mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.music);
                         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             @Override
