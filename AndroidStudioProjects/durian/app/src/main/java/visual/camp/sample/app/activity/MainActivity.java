@@ -74,10 +74,11 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout layout_cali, layout_game;
     private Chronometer time;
     private long pauseOffset;
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
     private LinearLayout img_sleep;
     private LinearLayout img_awake;
-    Button btn_quit;
+    private Button btn_quit;
+    private Long cal_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,19 +104,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 time.stop();
+                if(mediaPlayer != null){
+                    mediaPlayer.stop();
+                    mediaPlayer.reset();
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                }
+                time.stop();
                 pauseOffset = SystemClock.elapsedRealtime() - time.getBase();
                 Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                 intent.putExtra("time", pauseOffset);
                 startActivity(intent);
-                finish();
             }
         });
 
     }
 
-    private void isPlaying() {
-
-    }
 
     @Override
     protected void onStart() {
@@ -162,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                     preview.setVisibility(View.INVISIBLE);
                     img_awake.setVisibility(View.VISIBLE);
                     if(!running){
-                        time.setBase(SystemClock.elapsedRealtime() - pauseOffset);
+                        time.setBase(SystemClock.elapsedRealtime()-pauseOffset);
                         running = true;
                     }
                 }
@@ -484,6 +488,7 @@ public class MainActivity extends AppCompatActivity {
                 if (isRunning == true && caliOK==true) {
                     if (mediaPlayer == null) {
                         mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.music);
+                        time.start();
                         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             @Override
                             public void onCompletion(MediaPlayer mediaPlayer) {
@@ -499,6 +504,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void alivemode() {
@@ -522,6 +528,7 @@ public class MainActivity extends AppCompatActivity {
                     mediaPlayer.reset();
                     mediaPlayer.release();
                     mediaPlayer = null;
+
                     img_sleep.setVisibility(View.INVISIBLE);
                     img_awake.setVisibility(View.VISIBLE);
                 }

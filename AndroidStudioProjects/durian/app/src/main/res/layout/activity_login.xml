@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
-            android:text="※주의※\n안구 건조증이 있는 사람은 플레이를 자제할 것"
+            android:text="졸지말고 그냥 자라"
             android:textAlignment="center"
             android:textColor="#FFFFFF"/>
 
@@ -40,7 +40,7 @@
             android:id="@+id/btn_play"
             android:layout_width="100sp"
             android:layout_height="48dp"
-            android:layout_marginTop="20sp"
+            android:layout_marginTop="40sp"
             android:background="@drawable/circle_btn"
             android:text="Start" />
 

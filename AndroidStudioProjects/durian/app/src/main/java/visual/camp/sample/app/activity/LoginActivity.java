@@ -23,9 +23,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText et_nickName;
     Button btn_play;
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference rank = database.getReference();
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
